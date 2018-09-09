@@ -1,0 +1,45 @@
+<div class="container">
+ <h1>Controle de usuários</h1>
+ <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        
+      </ul>
+  <div class="row">
+     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+         <a routerLink="/cliente/salvar" class="btn btn-success">Novo</a>
+         <table class="table table-striped table-hover">   
+             <thead>
+                 <tr>
+                    <th>#</th>
+                   <th>Nome</th>
+                   <th>Sobrenome</th>
+                   <th>CPF</th>
+                   <th>Açoes</th>
+                 </tr>
+             </thead>
+             <tbody>  
+               <tr *ngFor = "let dados of dadosUsuario" [routerLink]= "['/cliente/detalhes',dados.id]">
+                   <td>{{dados.id}}</td>
+                   <td>{{dados.nome}}</td>
+                   <td>{{dados.sobrenome}}</td>
+                   <td>{{dados.documentos[0].descricao}}</td>
+                   <td><button class="btn btn-danger" (click)="onDelete(dados.id); $event.stopPropagation()">Deletar</button></td>
+               </tr>
+             </tbody>
+         </table>
+     </div>
+  </div>
+  <nav aria-label="Navegação de página exemplo">
+        <ul class="pagination justify-content-center">
+          <li class="page-item ">
+            <a class="page-link" (click)="paginaAnterior()">Anterior</a>
+          </li>
+          <li class="page-item"><a class="page-link" >{{pageable.pageNumber}} - {{totalPages}}</a></li>
+          <li class="page-item">
+            <a class="page-link" (click)="proximaPagina()">Próximo</a>
+          </li>
+        </ul>
+      </nav>
+</div>
+
+    

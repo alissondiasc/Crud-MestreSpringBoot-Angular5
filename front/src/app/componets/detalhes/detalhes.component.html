@@ -1,0 +1,62 @@
+<div id="main" class="container" *ngIf="clienteDetail">
+    <h3 class="page-header">Detalhes Item #{{clienteDetail.id}}</h3>
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a >/Detalhes</a></li>
+      </ul>
+    
+    <div class="row">
+      <div class="col-md-4">
+        <p><strong>Nome</strong></p>
+        <p>{{clienteDetail.nome}}</p>
+      </div>
+    
+    <div class="col-md-4">
+        <p><strong>Sobrenome</strong></p>
+        <p>{{clienteDetail.sobrenome}}</p>
+      </div>
+    
+    <div class="col-md-4">
+        <p><strong>Data de nascimento</strong></p>
+        <p>{{clienteDetail.dtNascimento}}</p>
+      </div>
+  
+      <div class="col-md-4">
+        <p><strong>Genero</strong></p>
+        <p>{{clienteDetail.genero}}</p>
+      </div>
+    
+    <div class="col-md-4">
+        <p><strong>Estado</strong></p>
+        <p>{{clienteDetail.estado.nome}} - {{clienteDetail.estado.sigla}}</p>
+      </div>
+    
+    <div class="col-md-4">
+        <p><strong>CPF</strong></p>
+        <p>{{clienteDetail.documentos[0].descricao}}</p>
+      </div>
+    
+      <div class="col-md-4">
+        <p><strong>RG</strong></p>
+        <p>{{clienteDetail.documentos[1].descricao}}</p>
+      </div>
+    
+    <div class="col-md-4">
+        <p><strong>Titulo de Eleitor</strong></p>
+        <p>{{clienteDetail.documentos[2].descricao}}</p>
+      </div>
+    
+    <div class="col-md-4">
+        <p><strong>Reservista</strong></p>
+        <p>{{clienteDetail.documentos[3].descricao}}</p>
+      </div>
+   </div>
+   
+   <hr />
+   <div id="actions" class="row">
+     <div class="col-md-12">
+       <a href="" class="btn btn-primary">Voltar</a>
+       <a [routerLink]= "['/cliente/salvar',clienteDetail.id]" class="btn btn-success">Editar</a>
+     
+     </div>
+   </div>

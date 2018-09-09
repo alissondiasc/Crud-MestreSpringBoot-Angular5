@@ -1,0 +1,178 @@
+<div class="container">
+  <div class="row">
+      <div class="col-2">
+          <div class="user-details-container">
+            <img class="user-image" src="https://randomuser.me/api/portraits/lego/3.jpg"/>
+            <span class="user-title">{{cadastroData.nome}} {{cadastroData.sobrenome}}</span>
+          </div>
+        </div>
+    <div class="col">
+      <h3>Preencha o formulário</h3>
+      <ul class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a >/Salvar</a></li>
+         
+        </ul>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)" >
+        
+            
+                <div class="row">
+                    <div class="col-6">
+                        <label>Nome</label>
+                        <input type="text" class="form-control"  value="{{cadastroData.nome}}" placeholder="*Nome" id="nome" formControlName="nome">
+                        <div class="errormsg">
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.nome">
+                              <div class="error-message" *ngIf="userForm.get('nome').hasError(validation.type) && (userForm.get('nome').dirty || userForm.get('nome').touched)">
+                                <p>{{ validation.message }}</p>
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                
+                      </div>
+                      <div class="col-6">
+                        <label>Sobrenome</label>
+                        <input type="text" class="form-control" value="{{cadastroData.sobrenome}}" placeholder="*Nome" id="nome" formControlName="sobrenome">
+                        <div class="errormsg">
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.sobrenome">
+                              <div class="error-message" *ngIf="userForm.get('sobrenome').hasError(validation.type) && (userForm.get('sobrenome').dirty || userForm.get('sobrenome').touched)">
+                                <p>{{ validation.message }}</p>
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label>CPF</label>
+                        <input type="text"  class="form-control" value="{{documentos.cpf}}" placeholder="*CPF" id="CPF" formControlName="CPF">
+                        <div class="errormsg">
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.CPF">
+                              <div class="error-message" *ngIf="userForm.get('CPF').hasError(validation.type) && (userForm.get('CPF').dirty || userForm.get('CPF').touched)">
+                                <p>{{ validation.message }}</p>
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                
+                      </div>
+                      <div class="col-6">
+                        <label>RG</label>
+                        <input type="text" class="form-control" value="{{documentos.rg}}"  placeholder="*RG" id="RG" formControlName="RG">
+                        <div class="errormsg">
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.RG">
+                              <div class="error-message" *ngIf="userForm.get('RG').hasError(validation.type) && (userForm.get('RG').dirty || userForm.get('RG').touched)">
+                                <p>{{ validation.message }}</p>
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label>Data nascimento</label>
+                        <input type="text" class="form-control" value="{{cadastroData.dtNascimento}}" placeholder="dd/mm/aaaa" id="dtNascimento" 
+                          formControlName="dtNascimento">
+                        <div class="errormsg">
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.dtNascimento">
+                              <div class="error-message" *ngIf="userForm.get('dtNascimento').hasError(validation.type) && (userForm.get('dtNascimento').dirty || userForm.get('dtNascimento').touched)">
+                                <p>{{ validation.message }}</p>
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <label>Estado</label>
+                        <select id="inputState" class="form-control"  formControlName="estadoNome">
+                            
+                          <option  *ngFor="let estado of estados"  [value]="estado">{{estado}}</option>
+                          
+                          
+                        </select>
+                      </div>
+                      <div class="col-4">
+                        <label>Sigla</label>
+                        <select  class="form-control"  formControlName="estadoSigla">
+                            
+                          <option  *ngFor="let sigla of sigla"[value]="sigla" >{{sigla}}</option>
+                          
+                        </select>
+                      </div>
+                </div>
+          
+          
+              
+              
+                
+              
+              
+                
+              
+              <div class="col-md-3">
+                <label for="newsletter" class="control-label">Genero</label>
+                <div id="genero" class="row">
+                  <div class="col-sm-4" *ngFor="let generos of generos">
+                    <label class="radio-inline">
+                      <input type="radio"  [value]="generos"  formControlName="genero" /> {{ generos}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-6">
+                      <label>Titulo de Eleitor</label>
+                      <input type="text" class="form-control" value="{{documentos.tituloEleitor}}" placeholder="*TituloEleitor" id="tituloEleitor" formControlName="tituloEleitor">
+                      <div class="errormsg">
+                        <div class="validation-errors">
+                          <ng-container *ngFor="let validation of validation_messages.tituloEleitor">
+                            <div class="error-message" *ngIf="userForm.get('tituloEleitor').hasError(validation.type) && (userForm.get('tituloEleitor').dirty || userForm.get('tituloEleitor').touched)">
+                              <p>{{ validation.message }}</p>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+              
+                    </div>
+                    <div class="col-6">
+                      <label>Reservista</label>
+                      <input type="text" class="form-control"  value="{{documentos.reservista}}" placeholder="*Reservista" id="Reservista" formControlName="Reservista">
+                      <div class="errormsg">
+                        <div class="validation-errors">
+                          <ng-container *ngFor="let validation of validation_messages.Reservista">
+                            <div class="error-message" *ngIf="userForm.get('Reservista').hasError(validation.type) && (userForm.get('Reservista').dirty || userForm.get('Reservista').touched)">
+                              <p>{{ validation.message }}</p>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+              
+                    </div>
+              </div>
+              <br>
+                  
+            
+            
+                
+              <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Cadastrar</button>
+              <a class=" btn btn-secondary" href="#">voltar</a>
+    
+        
+        
+      </form>
+    </div>
+  </div>
+
+</div>
+        
+     
+    
+  
